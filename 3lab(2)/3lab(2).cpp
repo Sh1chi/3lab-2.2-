@@ -20,15 +20,18 @@ public:
 
     ~Person() {}
 
-    const string getFirstName();
-    const string getLastName();
+    const string getFirstName(); // Метод получения имени человека
+    const string getLastName();// Метод получения фамилии человека
 };
+
+// Реализация методов класса Person
 const string Person::getFirstName() {
     return first_name;
 }
 const string Person::getLastName() {
     return last_name;
 }
+
 
 // Класс сотрудника
 class Employee {
@@ -44,11 +47,26 @@ public:
 
     ~Employee() {}
 
-    void OutputEmployee();
-    const string getFirstName();
-    const string getLastName();
+    const string getFirstName(); // Метод получения имени сотрудника
+    const string getLastName(); // Метод получения имени сотрудника
+    void outputEmployee(); // Метод вывода информации о сотруднике
 };
-void InputEmployee(string* first_name, string* last_name, string* position, int* salary) {
+
+// Реализация методов класса Employee
+const string Employee::getFirstName() {
+    return person.getFirstName();
+}
+const string Employee::getLastName() {
+    return person.getLastName();
+}
+void Employee::outputEmployee() {
+    cout << "Имя сотрудника: " << person.getFirstName() << " " << person.getLastName() << endl;
+    cout << "Должность сотрудника: " << position << endl;
+    cout << "Зарплата сотрудника: " << salary << endl;
+}
+
+// Функция ввода информации о сотруднике в адреса меременных
+void inputEmployee(string* first_name, string* last_name, string* position, int* salary) {
     cout << "Введите имя сотрудника: ";
     cin >> *first_name;
     cout << "Введите фамилию сотрудника: ";
@@ -58,17 +76,6 @@ void InputEmployee(string* first_name, string* last_name, string* position, int*
     getline(cin, *position);
     cout << "Введите зарплату сотрудника: ";
     cin >> *salary;
-}
-void Employee::OutputEmployee() {
-    cout << "Имя сотрудника: " << person.getFirstName() << " " << person.getLastName() << endl;
-    cout << "Должность сотрудника: " << position << endl;
-    cout << "Зарплата сотрудника: " << salary << endl;
-}
-const string Employee::getFirstName() {
-    return person.getFirstName();
-}
-const string Employee::getLastName() {
-    return person.getLastName();
 }
 
 
@@ -85,12 +92,25 @@ public:
 
     ~Customer() {}
 
-    // Добавим метод для вывода информации о покупателе
-    void OutputCustomer();
-    const string getFirstName();
-    const string getLastName();
+    const string getFirstName(); // Метод получения имени сотрудника
+    const string getLastName(); // Метод получения имени сотрудника
+    void outputCustomer(); // Метод вывода информации о покупателе
 };
-void InputCustomer(string* first_name, string* last_name, string* phone_number) {
+
+// Реализация методов класса Customer
+const string Customer::getFirstName() {
+    return person.getFirstName();
+}
+const string Customer::getLastName() {
+    return person.getLastName();
+}
+void Customer::outputCustomer() {
+    cout << "Имя покупателя: " << person.getFirstName() << " " << person.getLastName() << endl;
+    cout << "Номер телефона: " << phone_number << endl;
+}
+
+// Функция ввода информации о покупателе в адреса меременных
+void inputCustomer(string* first_name, string* last_name, string* phone_number) {
     cout << "Введите имя покупателя: ";
     cin >> *first_name;
     cout << "Введите фамилию покупателя: ";
@@ -98,16 +118,7 @@ void InputCustomer(string* first_name, string* last_name, string* phone_number) 
     cout << "Введите номер телефона: ";
     cin >> *phone_number;
 }
-void Customer::OutputCustomer() {
-    cout << "Имя покупателя: " << person.getFirstName() << " " << person.getLastName() << endl;
-    cout << "Номер телефона: " << phone_number << endl;
-}
-const string Customer::getFirstName() {
-    return person.getFirstName();
-}
-const string Customer::getLastName() {
-    return person.getLastName();
-}
+
 
 // Класс автомобиля
 class Car {
@@ -126,23 +137,29 @@ public:
 
     ~Car() {}
 
-    void OutputCar() {
-        cout << "Марка и модель авто: " << brand_model << endl;
-        cout << "Страна-производитель: " << country << endl;
-        cout << "Год производства: " << year << endl;
-        cout << "Цена: " << price << endl;
-        cout << "Состояние: " << condition << endl;
-        cout << "Количество: " << quantity << endl;
-    }
-
     // Добавим метод для получения марки и модели авто
-    const string getBrandModel();
+    const string getBrandModel(); // Метод получения марки и модели авто
+    const int getPrice(); // Метод получения цены авто
+    void outputCar(); // Метод вывода информации об автомобиле
 };
+// Реализация методов класса Car
 const string Car::getBrandModel() {
     return brand_model;
 }
-// Метод для ввода информации об автомобиле
-void InputCar(string* brand_model, string* country, int* year, int* price, string* condition, int* quantity) {
+const int Car::getPrice() {
+    return price;
+}
+void Car::outputCar() {
+    cout << "Марка и модель авто: " << brand_model << endl;
+    cout << "Страна-производитель: " << country << endl;
+    cout << "Год производства: " << year << endl;
+    cout << "Цена: " << price << endl;
+    cout << "Состояние: " << condition << endl;
+    cout << "Количество: " << quantity << endl;
+}
+
+// Функция ввода информации об автомобилях в адреса меременных
+void inputCar(string* brand_model, string* country, int* year, int* price, string* condition, int* quantity) {
     cout << "Введите марку и модель авто: ";
     cin.ignore(); // Очищаем буфер ввода перед считыванием строки
     getline(cin, *brand_model);
@@ -158,6 +175,7 @@ void InputCar(string* brand_model, string* country, int* year, int* price, strin
     cout << "Введите количество: ";
     cin >> *quantity;
 }
+
 
 // Класс автосалона
 class Dealership {
@@ -184,11 +202,15 @@ public:
 
     ~Dealership() {}
 
-    void OutputDealership(Employee* employeeArray, int num_employees, Car* carArray, int num_cars);
-    const string getDealershipName();
+    const string getDealershipName(); // Метод получения названия автосалона
+    void outputDealership(Employee* employeeArray, int num_employees, Car* carArray, int num_cars); // Функция вывода информации об автосалоне
 };
-// Метод для вывода информации об автосалоне
-void  Dealership::OutputDealership(Employee* employeeArray, int num_employees, Car* carArray, int num_cars) {
+
+// Реализация методов класса Dealership
+const string Dealership::getDealershipName() {
+    return name;
+}
+void  Dealership::outputDealership(Employee* employeeArray, int num_employees, Car* carArray, int num_cars) {
     cout << "Название автосалона: " << name << endl;
     cout << "Адрес автосалона: " << address << endl;
     cout << "-Сотрудники:" << endl;
@@ -202,9 +224,7 @@ void  Dealership::OutputDealership(Employee* employeeArray, int num_employees, C
         cout << j + 1 << ". " << carArray[j].getBrandModel() << endl;
     }
 }
-const string Dealership::getDealershipName() {
-    return name;
-}
+
 
 // Класс сделки
 class Deal {
@@ -224,9 +244,11 @@ public:
 
     ~Deal() {}
 
-    void OutputDeal();
+    void outputDeal(); // Метод вывода информации о сделке
 };
-void Deal::OutputDeal() {
+
+// Реализация методов класса Deal
+void Deal::outputDeal() {
     cout << " -- Сделка #" << deal_number << ":" << endl;
     cout << "Дата сделки: " << date << endl;
     cout << "Продавец: " << seller.getFirstName() << " " << seller.getLastName() << endl;
@@ -236,6 +258,7 @@ void Deal::OutputDeal() {
     cout << "Автосалон: " << dealership.getDealershipName() << endl;
 }
 
+
 // Функция для установки кодировки для консоли (для поддержки кириллицы)
 void SetConsoleEncoding() {
     SetConsoleCP(1251);
@@ -244,21 +267,22 @@ void SetConsoleEncoding() {
 
 
 int main() {
-    SetConsoleEncoding();
+    SetConsoleEncoding(); // Установка кодировки для консоли (для поддержки кириллицы)
 
     cout << "          -- Реализация АТД на языке С и С++ --" << endl;
     cout << endl;
 
+    // Ввод данных о автосалоне
     string dealership_name, dealership_address;
     cout << "Введите название автосалона: ";
     getline(cin, dealership_name);
     cout << "Введите адрес автосалона: ";
     getline(cin, dealership_address);
 
+    // Ввод количества сотрудников и создание массива сотрудников
     int num_employees;
     cout << "Введите количество сотрудников: ";
     cin >> num_employees;
-
     Employee* employeeArray = new Employee[num_employees];
 
     cout << endl;
@@ -267,24 +291,24 @@ int main() {
         string first_name, last_name, position;
         int salary;
         cout << "Сотрудник #" << i + 1 << ":" << endl;
-        InputEmployee(&first_name, &last_name, &position, &salary);
+        inputEmployee(&first_name, &last_name, &position, &salary);
         employeeArray[i] = Employee(first_name, last_name, position, salary);
         cout << endl;
     }
 
+    // Ввод количества автомобилей и создание массива автомобилей
     int num_cars;
     cout << "Введите количество автомобилей: ";
     cin >> num_cars;
-    cout << endl;
-
     Car* carArray = new Car[num_cars];
 
+    cout << endl;
     cout << "  -- Ввод данных об автомобилях --" << endl;
     for (int i = 0; i < num_cars; ++i) {
         string brand_model, country, condition;
         int year, price, quantity;
         cout << "Автомобиль #" << i + 1 << ":" << endl;
-        InputCar(&brand_model, &country, &year, &price, &condition, &quantity);
+        inputCar(&brand_model, &country, &year, &price, &condition, &quantity);
         carArray[i] = Car(brand_model, country, year, price, condition, quantity);
         cout << endl;
     }
@@ -296,52 +320,56 @@ int main() {
     cout << endl;
     cout << " __--Вся введенная информация--__" << endl;
     cout << endl;
+
     // Вывод информации об автосалоне
     cout << " -- Информация об автосалоне --" << endl;
-    dealership.OutputDealership(employeeArray, num_employees, carArray, num_cars);
-
+    dealership.outputDealership(employeeArray, num_employees, carArray, num_cars);
     cout << endl;
+
     // Вывод информации о сотрудниках
     cout << " -- Информация о сотрудниках --" << endl;
     for (int i = 0; i < num_employees; ++i) {
         cout << endl;
         cout << "Сотрудник #" << i + 1 << ":" << endl;
-        employeeArray[i].OutputEmployee();
+        employeeArray[i].outputEmployee();
     }
-
     cout << endl;
+
     // Вывод информации о автомобилях
     cout << " -- Информация об автомобилях --" << endl;
     for (int i = 0; i < num_cars; ++i) {
         cout << endl;
         cout << "Автомобиль #" << i + 1 << ":" << endl;
-        carArray[i].OutputCar();
+        carArray[i].outputCar();
     }
 
-
+    // Ввод количества сделок и создание массива сделок
     int num_deals;
     cout << endl;
     cout << "Введите количество сделок: ";
     cin >> num_deals;
-    cout << endl;
-
     Deal* dealArray = new Deal[num_deals];
+
     int deal_number;
+    cout << endl;
     cout << "  -- Ввод данных о сделках --" << endl;
+    // Ввод данных о каждой сделке и их сохранение в массиве
     for (int i = 0; i < num_deals; ++i) {
+        //Ввод номера сделки
         cout << "Сделка #";
         cin >> deal_number;
 
+        //Ввод даты сделки
         string deal_date;
         cout << "Введите дату сделки: ";
         cin >> deal_date;
 
-        // Введите данные о покупателе
+        // Ввод данных о покупателе
         string buyer_first_name, buyer_last_name, buyer_phone_number;
-        InputCustomer(&buyer_first_name, &buyer_last_name, &buyer_phone_number);
+        inputCustomer(&buyer_first_name, &buyer_last_name, &buyer_phone_number);
         Customer buyer(buyer_first_name, buyer_last_name, buyer_phone_number);
 
-        // Выведем список доступных сотрудников и попросим выбрать
+        // Вывод списка доступных сотрудников и попросим выбрать
         cout << "Выберите продавца (введите номер сотрудника):" << endl;
         for (int j = 0; j < num_employees; ++j) {
             cout << j + 1 << ". " << employeeArray[j].getFirstName() << " " << employeeArray[j].getLastName() << endl;
@@ -359,22 +387,25 @@ int main() {
         cin >> car_choice;
         Car car_sold = carArray[car_choice - 1];
 
-        dealArray[i] = Deal(deal_number, deal_date, seller, buyer, car_sold, 0, dealership);
+        // Создание объекта сделки и сохранение его в массиве
+        dealArray[i] = Deal(deal_number, deal_date, seller, buyer, car_sold, car_sold.getPrice(), dealership);
         cout << endl;
     }
 
+    // Вывод информации о каждой сделке
     cout << endl;
     cout << " __-- Информация о сделках --__" << endl;
 
     for (int i = 0; i < num_deals; ++i) {
-        dealArray[i].OutputDeal();
+        dealArray[i].outputDeal();
         cout << endl;
     }
 
-
+    // Освобождение выделенной памяти
     delete[] employeeArray;
     delete[] carArray;
     delete[] dealArray;
 
     return 0;
 }
+
